@@ -1,4 +1,9 @@
 #pragma once
+#include "Function.h"
+#include "FuncPower.h"
+#include "FuncDivisionByX.h"
+#include "FuncSumOfSinCos.h"
+
 
 namespace Project1 {
 
@@ -34,9 +39,13 @@ namespace Project1 {
 				delete components;
 			}
 		}
+	private: System::Windows::Forms::Button^ button1;
+	protected:
 
 	protected:
-	private: System::Windows::Forms::Button^ button1;
+
+	protected:
+
 	private: System::Windows::Forms::TextBox^ Result;
 
 	private: System::Windows::Forms::Label^ info;
@@ -51,6 +60,14 @@ namespace Project1 {
 	private: System::Windows::Forms::Button^ button4;
 	private: System::Windows::Forms::Button^ button5;
 	private: System::Windows::Forms::Button^ button6;
+	private: System::Windows::Forms::NumericUpDown^ func1;
+	private: System::Windows::Forms::NumericUpDown^ func2;
+
+
+	private: System::Windows::Forms::NumericUpDown^ numericUpDown3;
+
+
+
 
 
 	protected:
@@ -83,6 +100,12 @@ namespace Project1 {
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->button6 = (gcnew System::Windows::Forms::Button());
+			this->func1 = (gcnew System::Windows::Forms::NumericUpDown());
+			this->func2 = (gcnew System::Windows::Forms::NumericUpDown());
+			this->numericUpDown3 = (gcnew System::Windows::Forms::NumericUpDown());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->func1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->func2))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown3))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// button1
@@ -139,6 +162,7 @@ namespace Project1 {
 			resources->ApplyResources(this->button2, L"button2");
 			this->button2->Name = L"button2";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
 			// 
 			// button3
 			// 
@@ -164,11 +188,36 @@ namespace Project1 {
 			this->button6->Name = L"button6";
 			this->button6->UseVisualStyleBackColor = true;
 			// 
+			// func1
+			// 
+			resources->ApplyResources(this->func1, L"func1");
+			this->func1->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 999999999, 0, 0, 0 });
+			this->func1->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 999999999, 0, 0, System::Int32::MinValue });
+			this->func1->Name = L"func1";
+			this->func1->ValueChanged += gcnew System::EventHandler(this, &MyForm::numericUpDown1_ValueChanged);
+			// 
+			// func2
+			// 
+			resources->ApplyResources(this->func2, L"func2");
+			this->func2->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 999999999, 0, 0, 0 });
+			this->func2->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 999999999, 0, 0, System::Int32::MinValue });
+			this->func2->Name = L"func2";
+			// 
+			// numericUpDown3
+			// 
+			resources->ApplyResources(this->numericUpDown3, L"numericUpDown3");
+			this->numericUpDown3->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 999999999, 0, 0, 0 });
+			this->numericUpDown3->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 999999999, 0, 0, System::Int32::MinValue });
+			this->numericUpDown3->Name = L"numericUpDown3";
+			// 
 			// MyForm
 			// 
 			resources->ApplyResources(this, L"$this");
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::Info;
+			this->Controls->Add(this->numericUpDown3);
+			this->Controls->Add(this->func2);
+			this->Controls->Add(this->func1);
 			this->Controls->Add(this->button6);
 			this->Controls->Add(this->button5);
 			this->Controls->Add(this->button4);
@@ -183,11 +232,13 @@ namespace Project1 {
 			this->Controls->Add(this->info);
 			this->Controls->Add(this->Result);
 			this->Controls->Add(this->button1);
-			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::Fixed3D;
 			this->MaximizeBox = false;
-			this->MinimizeBox = false;
 			this->Name = L"MyForm";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->func1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->func2))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown3))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -199,7 +250,10 @@ namespace Project1 {
 	}
 	private: System::Void label1_Click_1(System::Object^ sender, System::EventArgs^ e) {
 	}
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e);
+	
+private: System::Void numericUpDown1_ValueChanged(System::Object^ sender, System::EventArgs^ e)
+{}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }
