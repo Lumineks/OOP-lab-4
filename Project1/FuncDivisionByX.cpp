@@ -13,7 +13,7 @@ FuncDivisionByX::FuncDivisionByX(FuncDivisionByX% other)
     this->argument = other.GetArgument();
 }
 
-double FuncDivisionByX::CalculateValue() 
+double^ FuncDivisionByX::CalculateValue()
 {
     return this->numerator / argument;
 }

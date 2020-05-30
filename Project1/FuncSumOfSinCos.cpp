@@ -1,7 +1,5 @@
 #include "FuncSumOfSinCos.h"
 
-//#define PI = 3.14159265
-
 FuncSumOfSinCos::FuncSumOfSinCos() : Function()
 {
 }
@@ -10,7 +8,7 @@ FuncSumOfSinCos::FuncSumOfSinCos(double argument) : Function(argument)
 {
 }
 
-double FuncSumOfSinCos::CalculateValue()
+double^ FuncSumOfSinCos::CalculateValue()
 {
     double temp = pow(argument, power);
     for (temp; temp > 360; temp -= 180);

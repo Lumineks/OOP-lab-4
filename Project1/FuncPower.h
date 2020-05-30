@@ -1,6 +1,6 @@
 #pragma once
 #include "Function.h"
-public ref class FuncPower :
+ref class FuncPower :
 	public Function
 {
 private:
@@ -11,6 +11,6 @@ public:
 	FuncPower(double argument);
 	FuncPower(FuncPower% other);
 
-	virtual double CalctulateValue() override;
+	virtual double^ CalculateValue() override;
 };
 

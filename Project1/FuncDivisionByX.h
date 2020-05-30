@@ -10,7 +10,7 @@ public:
 	FuncDivisionByX();
 	FuncDivisionByX(double argument);
 	FuncDivisionByX(FuncDivisionByX% other);
-	
-	virtual double CalculateValue() override;
+
+	virtual double^ CalculateValue() override;
 };
 

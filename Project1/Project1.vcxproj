@@ -119,6 +119,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FuncDivisionByX.cpp" />
+    <ClCompile Include="FuncList.cpp" />
     <ClCompile Include="FuncPower.cpp" />
     <ClCompile Include="FuncSumOfSinCos.cpp" />
     <ClCompile Include="Function.cpp" />
@@ -126,6 +127,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FuncDivisionByX.h" />
+    <ClInclude Include="FuncList.h" />
     <ClInclude Include="FuncPower.h" />
     <ClInclude Include="FuncSumOfSinCos.h" />
     <ClInclude Include="Function.h" />

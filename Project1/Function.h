@@ -4,7 +4,7 @@
 
 
 
-public ref class Function
+ref class Function abstract
 {
 protected:
 	double argument;
@@ -17,6 +17,6 @@ public:
 
 	void SetArgument(double argument);
 	
-	virtual double CalculateValue() = 0;
+	virtual double^ CalculateValue() override abstract;
 };
 

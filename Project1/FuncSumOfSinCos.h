@@ -11,6 +11,7 @@ public:
 	FuncSumOfSinCos();
 	FuncSumOfSinCos(double argument);
 
-	virtual double CalculateValue() override;
+	virtual double^ CalculateValue() override;
+
 };
 

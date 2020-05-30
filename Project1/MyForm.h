@@ -1,9 +1,10 @@
 #pragma once
+#include <iostream>
 #include "Function.h"
 #include "FuncPower.h"
 #include "FuncDivisionByX.h"
 #include "FuncSumOfSinCos.h"
-
+#include "FuncList.h"
 
 namespace Project1 {
 
@@ -19,6 +20,7 @@ namespace Project1 {
 	/// </summary>
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
+	
 	public:
 		MyForm(void)
 		{
@@ -26,8 +28,10 @@ namespace Project1 {
 			//
 			//TODO: добавьте код конструктора
 			//
+			functions = gcnew FuncList;
 		}
 
+		//cliext::list<Function> functions;
 	protected:
 		/// <summary>
 		/// Освободить все используемые ресурсы.
@@ -40,6 +44,7 @@ namespace Project1 {
 			}
 		}
 	private: System::Windows::Forms::Button^ button1;
+		   
 	protected:
 
 	protected:
@@ -62,13 +67,15 @@ namespace Project1 {
 	private: System::Windows::Forms::Button^ button6;
 	private: System::Windows::Forms::NumericUpDown^ func1;
 	private: System::Windows::Forms::NumericUpDown^ func2;
-
-
-	private: System::Windows::Forms::NumericUpDown^ numericUpDown3;
-
+	private: System::Windows::Forms::NumericUpDown^ func3;
 
 
 
+
+
+	private:
+		FuncList^ functions;
+		
 
 	protected:
 
@@ -102,10 +109,10 @@ namespace Project1 {
 			this->button6 = (gcnew System::Windows::Forms::Button());
 			this->func1 = (gcnew System::Windows::Forms::NumericUpDown());
 			this->func2 = (gcnew System::Windows::Forms::NumericUpDown());
-			this->numericUpDown3 = (gcnew System::Windows::Forms::NumericUpDown());
+			this->func3 = (gcnew System::Windows::Forms::NumericUpDown());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->func1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->func2))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown3))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->func3))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// button1
@@ -117,6 +124,7 @@ namespace Project1 {
 			// 
 			// Result
 			// 
+			this->Result->AcceptsReturn = true;
 			resources->ApplyResources(this->Result, L"Result");
 			this->Result->Name = L"Result";
 			// 
@@ -169,24 +177,28 @@ namespace Project1 {
 			resources->ApplyResources(this->button3, L"button3");
 			this->button3->Name = L"button3";
 			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &MyForm::button3_Click);
 			// 
 			// button4
 			// 
 			resources->ApplyResources(this->button4, L"button4");
 			this->button4->Name = L"button4";
 			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
 			// 
 			// button5
 			// 
 			resources->ApplyResources(this->button5, L"button5");
 			this->button5->Name = L"button5";
 			this->button5->UseVisualStyleBackColor = true;
+			this->button5->Click += gcnew System::EventHandler(this, &MyForm::button5_Click);
 			// 
 			// button6
 			// 
 			resources->ApplyResources(this->button6, L"button6");
 			this->button6->Name = L"button6";
 			this->button6->UseVisualStyleBackColor = true;
+			this->button6->Click += gcnew System::EventHandler(this, &MyForm::button6_Click);
 			// 
 			// func1
 			// 
@@ -203,19 +215,19 @@ namespace Project1 {
 			this->func2->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 999999999, 0, 0, System::Int32::MinValue });
 			this->func2->Name = L"func2";
 			// 
-			// numericUpDown3
+			// func3
 			// 
-			resources->ApplyResources(this->numericUpDown3, L"numericUpDown3");
-			this->numericUpDown3->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 999999999, 0, 0, 0 });
-			this->numericUpDown3->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 999999999, 0, 0, System::Int32::MinValue });
-			this->numericUpDown3->Name = L"numericUpDown3";
+			resources->ApplyResources(this->func3, L"func3");
+			this->func3->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 999999999, 0, 0, 0 });
+			this->func3->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 999999999, 0, 0, System::Int32::MinValue });
+			this->func3->Name = L"func3";
 			// 
 			// MyForm
 			// 
 			resources->ApplyResources(this, L"$this");
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::Info;
-			this->Controls->Add(this->numericUpDown3);
+			this->Controls->Add(this->func3);
 			this->Controls->Add(this->func2);
 			this->Controls->Add(this->func1);
 			this->Controls->Add(this->button6);
@@ -238,7 +250,7 @@ namespace Project1 {
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->func1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->func2))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown3))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->func3))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -255,5 +267,9 @@ namespace Project1 {
 private: System::Void numericUpDown1_ValueChanged(System::Object^ sender, System::EventArgs^ e)
 {}
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }
