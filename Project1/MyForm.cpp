@@ -56,7 +56,7 @@ System::Void Project1::MyForm::button5_Click(System::Object^ sender, System::Eve
 
 System::Void Project1::MyForm::button3_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	double argument = System::Convert::ToDouble(func2->Text);
+	double argument = System::Convert::ToDouble(func3->Text);
 
 	FuncSumOfSinCos^ sumOfSinCos = gcnew FuncSumOfSinCos;
 
